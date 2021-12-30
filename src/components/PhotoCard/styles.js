@@ -21,14 +21,7 @@ box-shadow: 0 10px 14px rgba(0,0,0,.2);
   width: 100%;
   top: 0;
 `
-export const Button = styled.button`
-padding-top: 8px;
-  display: flex;
-  align-items: center;
-  & svg{
-    margin-right: 4px;
-  }
-`
+
 export const Article = styled.article`
 min-height: 200px;
 `
