@@ -6,17 +6,17 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
 
 
-import { Home } from './pages/Home'
-import { Detail } from './pages/Detail'
-import { Layout } from './components/Layout'
+
 import { Router } from './routes'
 import { BrowserRouter } from 'react-router-dom'
+import { NavBar } from './components/NavBar'
+
 export const App = () =>{
 
    return  ( <BrowserRouter>
-     <Layout>
+       <GlobalStyles />
        <Router />
-     </Layout>
+<NavBar />
      </BrowserRouter>
   )
  }

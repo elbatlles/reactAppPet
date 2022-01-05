@@ -1,3 +1,23 @@
+import { useRegisterMutation } from '../hooks/useRegisterMutation'
+import {
+  createEntityAdapter,
+  createAsyncThunk,
+  createSlice
+} from "@reduxjs/toolkit";
+const graphqlAPI = (query, variables) => fetch("/graphql", {
+  method: "POST",
+  body: JSON.stringify({ query, variables })
+});
+export const addBook = createAsyncThunk("add book", ({ title }) =>
+  graphqlAPI(`
+    mutation ($title: string!){
+      add_book(objects: { title: $title }) {
+        id
+        title
+      }
+    }
+  `, { title })
+);
 const setUser = (userObj) => {
   return {
     type: "SET_USER",
@@ -15,14 +35,29 @@ const isAuth = () => {
     type: "@user/isAuth"
   }
 }
-const login = () => {
-  return {
-    type: "@user/login"
+const login = async (userform) => {
+  console.log(userform)
+// const [register,loading,error]= useRegisterMutation(userform)
+  try {
+    useRegisterMutation({
+      variables: {
+        input: userform
+      },
+    })
+  } catch (error) {
+    console.log(error)
   }
-}
-export default {
-  setUser,
-  logOut,
-  isAuth,
-  login
-}
+ //   reigster(userform)
+    return {
+      type: "@user/login",
+      payload: userform
+    }
+  }
+  export default {
+    setUser,
+    logOut,
+    isAuth,
+    login
+  }
+
+

@@ -19,6 +19,7 @@ const currentUser = (state = {}, action) => {
         loggedIn: true
       }
       case "@user/login":
+
       return {
         ...state,
         user: {},

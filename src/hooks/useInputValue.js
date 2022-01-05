@@ -8,10 +8,10 @@ const userInputValue = initial => {
    e.target.value
   )
 
-  return [
+  return {
     value,
     onChange
-  ]
+  }
 
 }
 
